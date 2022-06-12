@@ -1,9 +1,15 @@
-function App() {
-  return (
-    <div>
-      <h1>testd</h1>
-    </div>
-  );
-}
+import { ThemeProvider } from "styled-components";
+import { theme } from "./theme/theme";
+import GlobalStyle from "./theme/GlobalStyles";
+import { AppRoutes } from "./routing/AppRoutes";
+import { Header } from "./components";
 
-export default App;
+export const App = () => {
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Header />
+      <AppRoutes />
+    </ThemeProvider>
+  );
+};
