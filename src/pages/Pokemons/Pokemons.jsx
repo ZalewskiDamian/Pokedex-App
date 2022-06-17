@@ -5,29 +5,29 @@ import { Container, Wrapper, Heading, Subheading } from "./Pokemons.styles";
 
 const Pokemons = () => {
   const [pokemons, setPokemons] = useState([]);
-  const [currentPage, setCurrentPage] = useState(
-    `${process.env.REACT_APP_URL}?offset=600`
-  );
-  const [prevPage, setPrevPage] = useState();
-  const [nextPage, setNextPage] = useState();
+  const [url, setUrl] = useState(process.env.REACT_APP_URL);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageCount, setPageCount] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
 
   const getPokemons = async () => {
+    const perPage = 20;
+    const offset = currentPage * perPage - perPage;
     setLoading(true);
     setPokemons([]);
-    await axios.get(currentPage).then((res) => {
+
+    await axios.get(`${url}?limit=${perPage}&offset=${offset}`).then((res) => {
       res.data.results.forEach((item) => {
         axios
-          .get(`${process.env.REACT_APP_URL}/${item.name}`)
+          .get(`${url}/${item.name}`)
           .then((res) => {
             setPokemons((prevState) => [...prevState, res.data]);
           })
           .catch((err) => console.log("err:", err));
       });
+      setPageCount(Math.ceil(res.data.count / perPage));
       setLoading(false);
-      setPrevPage(res.data.previous);
-      setNextPage(res.data.next);
-      console.log(pokemons);
     });
   };
 
@@ -35,12 +35,12 @@ const Pokemons = () => {
     getPokemons();
   }, [currentPage]);
 
-  const goToNextPage = () => {
-    setCurrentPage(nextPage);
+  const changePage = (page) => {
+    setCurrentPage(page);
   };
 
-  const goToPrevPage = () => {
-    setCurrentPage(prevPage);
+  const searchPokemon = (e) => {
+    setSearch(e.target.value);
   };
 
   return (
@@ -50,12 +50,13 @@ const Pokemons = () => {
         <Subheading>
           Search for Pokemon by name or using the National Pokedex number.
         </Subheading>
-        <Search placeholder="Search pokemon..." />
-        {loading ? <Loading /> : <PokemonList pokemons={pokemons} />}
-        <Pagination
-          nextPage={nextPage ? goToNextPage : null}
-          prevPage={prevPage ? goToPrevPage : null}
-        />
+        <Search onChange={searchPokemon} placeholder="Search pokemon..." />
+        {loading ? (
+          <Loading />
+        ) : (
+          <PokemonList search={search} pokemons={pokemons} />
+        )}
+        <Pagination pageCount={pageCount} changePage={changePage} />
       </Wrapper>
     </Container>
   );

@@ -6,6 +6,7 @@ import PokemonThumbnails from "./PokemonThumbnail/PokemonThumbnail";
 import Type from "./Type/Type";
 import Loading from "./Loading/Loading";
 import Navigation from "./Navigation/Navigation";
+import PokemonModal from "./PokemonModal/PokemonModal";
 
 export {
   Header,
@@ -16,4 +17,5 @@ export {
   Type,
   Loading,
   Navigation,
+  PokemonModal,
 };

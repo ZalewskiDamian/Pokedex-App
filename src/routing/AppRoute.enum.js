@@ -1,4 +1,4 @@
 export const AppRoute = {
   home: "/",
-  pokemons: "/pokemons",
+  pokemons: "/pokemon",
 };
