@@ -1,5 +1,19 @@
 import Header from "./Header/Header";
 import Search from "./Search/Search";
-import Card from "./Card/Card";
+import Pagination from "./Pagination/Pagination";
+import PokemonList from "./PokemonList/PokemonList";
+import PokemonThumbnails from "./PokemonThumbnail/PokemonThumbnail";
+import Type from "./Type/Type";
+import Loading from "./Loading/Loading";
+import Navigation from "./Navigation/Navigation";
 
-export { Header, Search, Card };
+export {
+  Header,
+  Search,
+  PokemonThumbnails,
+  Pagination,
+  PokemonList,
+  Type,
+  Loading,
+  Navigation,
+};

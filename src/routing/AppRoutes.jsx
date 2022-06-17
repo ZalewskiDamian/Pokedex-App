@@ -1,13 +1,13 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { AppRoute } from "./AppRoute.enum";
-import Home from "../views/Home/Home";
+import Home from "../pages/Home/Home";
+import Pokemons from "../pages/Pokemons/Pokemons";
 
 export const AppRoutes = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path={AppRoute.home} element={<Home />} />
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path={AppRoute.home} element={<Home />} />
+      <Route path={AppRoute.pokemons} element={<Pokemons />} />
+    </Routes>
   );
 };
