@@ -7,9 +7,12 @@ import PokemonDetails from "../pages/PokemonDetails/PokemonDetails";
 export const AppRoutes = () => {
   return (
     <Routes>
-      <Route path={AppRoute.home} element={<Home />} />
-      <Route path={AppRoute.pokemons} element={<Pokemons />} />
-      <Route path={`${AppRoute.pokemons}/:id`} element={<PokemonDetails />} />
+      <Route path={`/Pokedex-App${AppRoute.home}`} element={<Home />} />
+      <Route path={`/Pokedex-App${AppRoute.pokemons}`} element={<Pokemons />} />
+      <Route
+        path={`/Pokedex-App${AppRoute.pokemons}/:id`}
+        element={<PokemonDetails />}
+      />
     </Routes>
   );
 };
