@@ -35,6 +35,8 @@ export const theme = {
   font: {
     headingM: "3rem",
     headingD: "4.2rem",
+    titleM: "2.2rem",
+    titleD: "2.8rem",
     subheadingM: "1.8rem",
     subheadingD: "2.4rem",
     paragraph: "1.6rem",

@@ -13,8 +13,7 @@ import {
   TypesWrapper,
   WrapperBottom,
 } from "./PokemonDetails.styles";
-import { Type, Loading } from "../../components";
-import { Wrapper } from "../../components/Header/Header.styles";
+import { Type, Loading, Tabs } from "../../components";
 
 const PokemonDetails = () => {
   const [pokemon, setPokemon] = useState({});
@@ -27,7 +26,6 @@ const PokemonDetails = () => {
       .get(`${process.env.REACT_APP_URL}/${id}`)
       .then((res) => setPokemon(res.data))
       .catch((err) => console.log("Err: ", err));
-    console.log(pokemon);
     setLoading(false);
   };
 
@@ -61,13 +59,15 @@ const PokemonDetails = () => {
                 <Name>{capitalizeName(pokemon.name)}</Name>
                 <TypesWrapper>
                   {pokemon.types.map((item) => (
-                    <Type type={item.type.name} />
+                    <Type key={item.slot} type={item.type.name} />
                   ))}
                 </TypesWrapper>
               </Content>
             </Inner>
           </WrapperTop>
-          <WrapperBottom>test</WrapperBottom>
+          <WrapperBottom>
+            <Tabs pokemon={pokemon} />
+          </WrapperBottom>
         </>
       )}
     </Container>

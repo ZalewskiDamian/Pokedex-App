@@ -47,16 +47,16 @@ const GlobalStyle = createGlobalStyle`
         background-color: #A8A77A;
     }
     .fire {
-        background-color: #EE8130;
+        background-color: #ffa756;
     }
     .water {
-        background-color: #6390F0;
+        background-color: #58abf6;
     }
     .electric {
         background-color: #F7D02C;
     }
     .grass {
-        background-color: #7AC74C;
+        background-color: #8bbe8a;
     }
     .ice {
         background-color: #96D9D6;

@@ -11,13 +11,13 @@ const Pokemons = () => {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
 
-  const getPokemons = async () => {
+  const getPokemons = () => {
     const perPage = 20;
     const offset = currentPage * perPage - perPage;
     setLoading(true);
     setPokemons([]);
 
-    await axios.get(`${url}?limit=${perPage}&offset=${offset}`).then((res) => {
+    axios.get(`${url}?limit=${perPage}&offset=${offset}`).then((res) => {
       res.data.results.forEach((item) => {
         axios
           .get(`${url}/${item.name}`)

@@ -3,10 +3,14 @@ import pokemonBg from "../../assets/images/pokemon-details-bg.svg";
 
 export const Container = styled.div`
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `;
 export const WrapperTop = styled.div`
   width: 100%;
-  padding: 8rem 2rem;
+  padding: 8rem 2rem 10rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,9 +88,10 @@ export const TypesWrapper = styled.div`
   justify-content: flex-start;
 `;
 export const WrapperBottom = styled.div`
+  width: 100%;
   background-color: ${({ theme }) => theme.colors.white};
   border-top-left-radius: 2.5rem;
   border-top-right-radius: 2.5rem;
   transform: translateY(-2rem);
-  padding: 2rem;
+  padding: 0 2rem 2rem 2rem;
 `;
