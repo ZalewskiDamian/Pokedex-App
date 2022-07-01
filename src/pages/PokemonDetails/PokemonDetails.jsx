@@ -50,7 +50,11 @@ const PokemonDetails = () => {
             <Inner>
               <ImageWrapper>
                 <PokemonImage
-                  src={pokemon.sprites.other.dream_world.front_default}
+                  src={
+                    pokemon.sprites.other.dream_world.front_default === null
+                      ? pokemon.sprites.other["official-artwork"].front_default
+                      : pokemon.sprites.other.dream_world.front_default
+                  }
                   alt={pokemon.name}
                 />
               </ImageWrapper>

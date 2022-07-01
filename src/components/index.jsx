@@ -11,6 +11,7 @@ import Tabs from "./Tabs/Tabs";
 import TabAbout from "./TabAbout/TabAbout";
 import TabStats from "./TabStats/TabStats";
 import TabEvolution from "./TabEvolution/TabEvolution";
+import Filters from "./Filters/Filters";
 
 export {
   Header,
@@ -26,4 +27,5 @@ export {
   TabAbout,
   TabStats,
   TabEvolution,
+  Filters,
 };

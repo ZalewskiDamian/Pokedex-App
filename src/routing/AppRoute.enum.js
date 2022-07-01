@@ -1,4 +1,4 @@
 export const AppRoute = {
-  home: "/",
-  pokemons: "/pokemon",
+  home: "/Pokedex-App",
+  pokemons: "/Pokedex-App/pokemon",
 };
