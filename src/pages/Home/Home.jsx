@@ -1,12 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import {
-  Search,
-  Loading,
-  PokemonList,
-  Pagination,
-  Filters,
-} from "../../components";
+import { regions, sort, types } from "./Home.data";
+import { Loading, PokemonList, Filters } from "../../components";
 import { Container, Wrapper, Heading, Subheading } from "./Home.styles";
 
 const Home = () => {
@@ -20,78 +15,13 @@ const Home = () => {
   const [sortBy, setSortBy] = useState("id");
   const [type, setType] = useState("all types");
   const [filteredPokemons, setFilteredPokemons] = useState([]);
+  const [typeNotFound, setTypeNotFound] = useState(false);
   const [search, setSearch] = useState("");
-  // const [searchPokemons, setSearchPokemons] = useState([]);
-  // const [noSearchFound, setNoSearchFound] = useState(false);
-
-  const regions = [
-    {
-      name: "Kanto",
-      limit: 151,
-      offset: 0,
-    },
-    {
-      name: "Johto",
-      limit: 100,
-      offset: 151,
-    },
-    {
-      name: "Hoenn",
-      limit: 135,
-      offset: 251,
-    },
-    {
-      name: "Sinnoh",
-      limit: 108,
-      offset: 386,
-    },
-    {
-      name: "Unova",
-      limit: 155,
-      offset: 494,
-    },
-    {
-      name: "Kalos",
-      limit: 72,
-      offset: 649,
-    },
-    {
-      name: "Alola",
-      limit: 88,
-      offset: 721,
-    },
-    {
-      name: "Galar",
-      limit: 89,
-      offset: 809,
-    },
-  ];
-  const sort = ["id", "name"];
-  const types = [
-    "all types",
-    "grass",
-    "bug",
-    "dark",
-    "dragon",
-    "electric",
-    "fairy",
-    "fighting",
-    "fire",
-    "flying",
-    "ghost",
-    "ground",
-    "ice",
-    "normal",
-    "poison",
-    "psychic",
-    "rock",
-    "steel",
-    "water",
-  ];
 
   const getAllPokemons = async (limit, offset) => {
     setLoading(true);
     setPokemons([]);
+
     await axios.get(`${url}?limit=${limit}&offset=${offset}`).then((res) => {
       res.data.results.forEach((item) => {
         axios
@@ -141,8 +71,12 @@ const Home = () => {
 
     pokemons.forEach((pokemon) => {
       pokemon.types.forEach((item) => {
-        if (item.type.name === e.target.value) {
+        if (e.target.value === "all types") {
+          setTypeNotFound(false);
+        } else if (e.target.value === item.type.name) {
           setFilteredPokemons((prevState) => [...prevState, pokemon]);
+        } else {
+          setTypeNotFound(true);
         }
       });
     });
@@ -175,6 +109,7 @@ const Home = () => {
           <PokemonList
             pokemons={pokemons}
             filteredPokemons={filteredPokemons}
+            typeNotFound={typeNotFound}
             search={search}
           />
         )}
