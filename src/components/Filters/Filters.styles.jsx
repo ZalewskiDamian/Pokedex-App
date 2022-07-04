@@ -15,13 +15,14 @@ export const SelectWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 `;
 export const SelectTitle = styled.h3(
   ({ theme }) => `
     font-size: ${theme.font.titleM};
     font-weight: ${theme.weight.bold};
     color: ${theme.colors.black};
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
   `
 );
 export const Select = styled.select(
@@ -33,6 +34,7 @@ export const Select = styled.select(
   padding: .5rem 1rem;
   border: .1rem solid ${theme.colors.gray};
   cursor: pointer;
+  outline: none;
   `
 );
 export const Option = styled.option``;

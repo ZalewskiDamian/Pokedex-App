@@ -59,7 +59,7 @@ const PokemonDetails = () => {
                 />
               </ImageWrapper>
               <Content>
-                <Number>#{pokemon.id}</Number>
+                <Number>#{String(pokemon.id).padStart(3, "0")}</Number>
                 <Name>{capitalizeName(pokemon.name)}</Name>
                 <TypesWrapper>
                   {pokemon.types.map((item) => (

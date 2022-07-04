@@ -1,6 +1,6 @@
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { AppRoute } from "../../routing/AppRoute.enum";
+
 import Type from "../Type/Type";
 import {
   Card,
@@ -22,7 +22,7 @@ const PokemonThumbnail = ({ id, name, image, types }) => {
     <NavLink to={`${AppRoute.pokemons}/${id}`}>
       <Card className={typeColor}>
         <Content>
-          <Number>#{id}</Number>
+          <Number>#{String(id).padStart(3, "0")}</Number>
           <Name>{capitalizeName(name)}</Name>
           <Image src={image} alt={name} />
           <TypesWrapper>

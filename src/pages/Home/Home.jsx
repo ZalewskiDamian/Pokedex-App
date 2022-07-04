@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { regions, sort, types } from "./Home.data";
 import { Loading, PokemonList, Filters } from "../../components";
-import { Container, Wrapper, Heading, Subheading } from "./Home.styles";
+import { Container, Wrapper } from "./Home.styles";
 
 const Home = () => {
   const [pokemons, setPokemons] = useState([]);
   const [url, setUrl] = useState(process.env.REACT_APP_URL);
   const [loading, setLoading] = useState(true);
   // FILTERS
-  const [limit, setLimit] = useState(151);
+  const [limit, setLimit] = useState(30);
   const [offset, setOffset] = useState(0);
   const [region, setRegion] = useState("Kanto");
   const [sortBy, setSortBy] = useState("id");
@@ -89,8 +89,6 @@ const Home = () => {
   return (
     <Container>
       <Wrapper>
-        <Heading>Pokedex</Heading>
-        <Subheading>Search for Pokemon by name.</Subheading>
         <Filters
           regions={regions}
           region={region}

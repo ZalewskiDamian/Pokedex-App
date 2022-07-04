@@ -39,6 +39,20 @@ export const WrapperTop = styled.div`
       rgba(255, 255, 255, 0.15) 5%,
       transparent 80%
     );
+    mask-image: linear-gradient(
+      180deg,
+      transparent 5%,
+      rgba(255, 255, 255, 0.4) 25%,
+      rgba(255, 255, 255, 0.15) 5%,
+      transparent 80%
+    );
+  }
+
+  @media (min-width: 992px) {
+    padding: 12rem 2rem 8rem;
+    &::before {
+      font-size: 12rem;
+    }
   }
 `;
 export const Inner = styled.div`
@@ -55,6 +69,11 @@ export const ImageWrapper = styled.div`
   background-image: url(${pokemonBg});
   background-size: cover;
   background-repeat: no-repeat;
+
+  @media (min-width: 992px) {
+    width: 18rem;
+    height: 18rem;
+  }
 `;
 export const PokemonImage = styled.img`
   width: 100%;
@@ -65,6 +84,10 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding-left: 2rem;
+
+  @media (min-width: 992px) {
+    padding-left: 4rem;
+  }
 `;
 export const Number = styled.p(
   ({ theme }) => `

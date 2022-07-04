@@ -14,6 +14,9 @@ export const TabsNav = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  max-width: 54rem;
+  margin: 0 auto;
 `;
 export const Tab = styled.button(
   ({ theme, active }) => `
