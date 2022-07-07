@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
+export const Container = styled.div`
+  width: 100%;
+`;
+
 export const Grid = styled(motion.ul)`
   width: 100%;
   display: grid;

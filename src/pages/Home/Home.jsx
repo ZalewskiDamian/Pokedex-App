@@ -15,6 +15,7 @@ const Home = () => {
   const [sortBy, setSortBy] = useState("id");
   const [type, setType] = useState("all types");
   const [filteredPokemons, setFilteredPokemons] = useState([]);
+  const [isFilter, setIsFilter] = useState(false);
   const [typeNotFound, setTypeNotFound] = useState(false);
   const [search, setSearch] = useState("");
 
@@ -50,6 +51,17 @@ const Home = () => {
         setOffset(item.offset);
       }
     });
+
+    // if (type !== "all types") {
+    //   setFilteredPokemons([]);
+    //   pokemons.forEach((pokemon) => {
+    //     pokemon.types.forEach((item) => {
+    //       if (type === item.type.name) {
+    //         setFilteredPokemons((prevState) => [...prevState, pokemon]);
+    //       }
+    //     });
+    //   });
+    // }
   };
 
   const handleChangeSortBy = (e) => {
@@ -66,7 +78,6 @@ const Home = () => {
   };
 
   const handleChangeType = (e) => {
-    setType(e.target.value);
     setFilteredPokemons([]);
 
     pokemons.forEach((pokemon) => {
@@ -80,6 +91,9 @@ const Home = () => {
         }
       });
     });
+
+    setType(e.target.value);
+    setIsFilter(true);
   };
 
   const handleSearchPokemon = (e) => {
@@ -107,6 +121,7 @@ const Home = () => {
           <PokemonList
             pokemons={pokemons}
             filteredPokemons={filteredPokemons}
+            isFilter={isFilter}
             typeNotFound={typeNotFound}
             search={search}
           />
