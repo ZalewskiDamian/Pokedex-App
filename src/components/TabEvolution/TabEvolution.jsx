@@ -19,11 +19,10 @@ const TabEvolution = ({ pokemon }) => {
   };
 
   useEffect(() => {
-    getEvolutionChain();
+    // getEvolutionChain();
   }, []);
 
-  console.log(evolutionData);
-  return <Wrapper>ds</Wrapper>;
+  return <Wrapper>To do</Wrapper>;
 };
 
 export default TabEvolution;

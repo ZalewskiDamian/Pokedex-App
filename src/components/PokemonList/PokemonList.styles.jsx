@@ -12,3 +12,5 @@ export const Grid = styled(motion.ul)`
   grid-template-columns: repeat(auto-fill, minmax(30rem, 48rem));
   grid-gap: 3rem 1rem;
 `;
+
+export const MotionListItem = styled(motion.li)``;

@@ -1,6 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import { motion } from "framer-motion";
-import { Container, Grid } from "./PokemonList.styles";
+import { Container, Grid, MotionListItem } from "./PokemonList.styles";
 import PokemonThumbnail from "../PokemonThumbnail/PokemonThumbnail";
 import PokemonNotFound from "../PokemonNotFound/PokemonNotFound";
 
@@ -9,8 +8,8 @@ const list = {
     opacity: 1,
     transition: {
       when: "beforeChildren",
-      staggerChildren: 0.35,
-      delayChildren: 0.75,
+      staggerChildren: 0.2,
+      delayChildren: 0.5,
     },
   },
   hidden: {
@@ -54,7 +53,7 @@ const PokemonList = ({ pokemons, filteredPokemons, typeNotFound, search }) => {
           {pokemons
             .filter((pokemon) => pokemon.name.includes(search.toLowerCase()))
             .map((pokemon) => (
-              <motion.li variants={items} key={pokemon.id}>
+              <MotionListItem variants={items} key={pokemon.id}>
                 <PokemonThumbnail
                   id={pokemon.id}
                   name={pokemon.name}
@@ -65,7 +64,7 @@ const PokemonList = ({ pokemons, filteredPokemons, typeNotFound, search }) => {
                   }
                   types={pokemon.types}
                 />
-              </motion.li>
+              </MotionListItem>
             ))}
         </Grid>
       )}

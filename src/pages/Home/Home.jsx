@@ -6,36 +6,45 @@ import { Container, Wrapper } from "./Home.styles";
 
 const Home = () => {
   const [pokemons, setPokemons] = useState([]);
+  const [filteredPokemons, setFilteredPokemons] = useState([]);
+  const [searchPokemons, setSearchPokemons] = useState([]);
   const [url, setUrl] = useState(process.env.REACT_APP_URL);
   const [loading, setLoading] = useState(true);
   // FILTERS
-  const [limit, setLimit] = useState(30);
+  const [limit, setLimit] = useState(151);
   const [offset, setOffset] = useState(0);
   const [region, setRegion] = useState("Kanto");
   const [sortBy, setSortBy] = useState("id");
   const [type, setType] = useState("all types");
-  const [filteredPokemons, setFilteredPokemons] = useState([]);
   const [isFilter, setIsFilter] = useState(false);
   const [typeNotFound, setTypeNotFound] = useState(false);
   const [search, setSearch] = useState("");
 
+  const getPokemonData = async (result) => {
+    const pokemonArr = [];
+
+    await Promise.all(
+      result.map((pokemon) => {
+        return axios
+          .get(`${url}/${pokemon.name}`)
+          .then((res) => pokemonArr.push(res.data))
+          .catch((err) => console.log("err:", err));
+      })
+    );
+    pokemonArr.sort((a, b) => (a.id > b.id ? 1 : -1));
+    setPokemons(pokemonArr);
+    setLoading(false);
+  };
+
   const getAllPokemons = async (limit, offset) => {
     setLoading(true);
-    setPokemons([]);
 
-    await axios.get(`${url}?limit=${limit}&offset=${offset}`).then((res) => {
-      res.data.results.forEach((item) => {
-        axios
-          .get(`${url}/${item.name}`)
-          .then((res) => {
-            setPokemons((prevState) =>
-              [...prevState, res.data].sort((a, b) => (a.id > b.id ? 1 : -1))
-            );
-          })
-          .catch((err) => console.log("err:", err));
-      });
-      setLoading(false);
-    });
+    await axios
+      .get(`${url}?limit=${limit}&offset=${offset}`)
+      .then((res) => {
+        getPokemonData(res.data.results);
+      })
+      .catch((err) => console.log("err:", err));
   };
 
   useEffect(() => {
@@ -51,17 +60,6 @@ const Home = () => {
         setOffset(item.offset);
       }
     });
-
-    // if (type !== "all types") {
-    //   setFilteredPokemons([]);
-    //   pokemons.forEach((pokemon) => {
-    //     pokemon.types.forEach((item) => {
-    //       if (type === item.type.name) {
-    //         setFilteredPokemons((prevState) => [...prevState, pokemon]);
-    //       }
-    //     });
-    //   });
-    // }
   };
 
   const handleChangeSortBy = (e) => {

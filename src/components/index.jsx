@@ -1,7 +1,7 @@
 import Header from "./Header/Header";
 import Search from "./Search/Search";
 import PokemonList from "./PokemonList/PokemonList";
-import PokemonThumbnails from "./PokemonThumbnail/PokemonThumbnail";
+import PokemonThumbnail from "./PokemonThumbnail/PokemonThumbnail";
 import Type from "./Type/Type";
 import Loading from "./Loading/Loading";
 import Navigation from "./Navigation/Navigation";
@@ -16,7 +16,7 @@ import PokemonNotFound from "./PokemonNotFound/PokemonNotFound";
 export {
   Header,
   Search,
-  PokemonThumbnails,
+  PokemonThumbnail,
   PokemonList,
   Type,
   Loading,
