@@ -19,6 +19,7 @@ const Filters = ({
   types,
   type,
   handleChangeType,
+  search,
   handleSearchPokemon,
 }) => {
   return (
@@ -55,7 +56,12 @@ const Filters = ({
           </Select>
         </SelectWrapper>
       </FiltersWrapper>
-      <Search onChange={handleSearchPokemon} placeholder="Search pokemon..." />
+      <Search
+        type="text"
+        value={search}
+        onChange={handleSearchPokemon}
+        placeholder="Search pokemon..."
+      />
     </Wrapper>
   );
 };

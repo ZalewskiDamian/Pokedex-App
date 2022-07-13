@@ -17,11 +17,14 @@ const Home = () => {
   const [sortBy, setSortBy] = useState("id");
   const [type, setType] = useState("all types");
   const [isFilter, setIsFilter] = useState(false);
+  const [isTypeSelected, setIsTypeSelected] = useState(false);
   const [typeNotFound, setTypeNotFound] = useState(false);
+  const [isSearch, setIsSearch] = useState(false);
   const [search, setSearch] = useState("");
 
   const getPokemonData = async (result) => {
     const pokemonArr = [];
+    const filterArr = [];
 
     await Promise.all(
       result.map((pokemon) => {
@@ -32,8 +35,24 @@ const Home = () => {
       })
     );
     pokemonArr.sort((a, b) => (a.id > b.id ? 1 : -1));
-    setPokemons(pokemonArr);
-    setLoading(false);
+
+    if (isTypeSelected) {
+      pokemons.forEach((pokemon) => {
+        pokemon.types.forEach((item) => {
+          if (type === item.type.name) {
+            filterArr.push(pokemon);
+          }
+        });
+      });
+      setIsFilter(true);
+      setFilteredPokemons(filterArr);
+      setPokemons(pokemonArr);
+      setLoading(false);
+    } else {
+      setIsFilter(false);
+      setPokemons(pokemonArr);
+      setLoading(false);
+    }
   };
 
   const getAllPokemons = async (limit, offset) => {
@@ -52,10 +71,11 @@ const Home = () => {
   }, [limit, offset]);
 
   const handleChangeRegion = (e) => {
-    setRegion(e.target.value);
-
     regions.forEach((item) => {
       if (e.target.value === item.name) {
+        setRegion(e.target.value);
+        setIsSearch(false);
+        setIsFilter(false);
         setLimit(item.limit);
         setOffset(item.offset);
       }
@@ -76,26 +96,66 @@ const Home = () => {
   };
 
   const handleChangeType = (e) => {
-    setFilteredPokemons([]);
+    setType(e.target.value);
+
+    if (e.target.value === "all types") {
+      const allPokemons = pokemons;
+      setPokemons(allPokemons);
+      console.log("tak");
+    } else {
+      console.log("nie");
+      setIsTypeSelected(true);
+    }
+    const filterArr = [];
 
     pokemons.forEach((pokemon) => {
       pokemon.types.forEach((item) => {
-        if (e.target.value === "all types") {
-          setTypeNotFound(false);
-        } else if (e.target.value === item.type.name) {
-          setFilteredPokemons((prevState) => [...prevState, pokemon]);
-        } else {
-          setTypeNotFound(true);
+        if (e.target.value === item.type.name) {
+          filterArr.push(pokemon);
         }
       });
     });
 
-    setType(e.target.value);
+    setIsSearch(false);
     setIsFilter(true);
+    setFilteredPokemons(filterArr);
+    setType(e.target.value);
+
+    if (filterArr.length === 0) {
+      console.log("arr = 0");
+      setTypeNotFound(true);
+    } else {
+      console.log("arr = 1");
+      setTypeNotFound(false);
+    }
   };
 
   const handleSearchPokemon = (e) => {
     setSearch(e.target.value);
+
+    if (e.target.value !== "") {
+      setIsSearch(true);
+      setType("all types");
+    } else {
+      setIsSearch(false);
+      setIsFilter(false);
+    }
+
+    const searchArr = [];
+
+    pokemons.forEach((pokemon) => {
+      if (pokemon.name.includes(search.toLowerCase())) {
+        searchArr.push(pokemon);
+      }
+    });
+
+    if (searchArr.length === 0) {
+      setTypeNotFound(true);
+      setSearchPokemons([]);
+    } else {
+      setTypeNotFound(false);
+      setSearchPokemons(searchArr);
+    }
   };
 
   return (
@@ -108,6 +168,7 @@ const Home = () => {
           sortBy={sortBy}
           types={types}
           type={type}
+          search={search}
           changeRegion={handleChangeRegion}
           handleSortBy={handleChangeSortBy}
           handleChangeType={handleChangeType}
@@ -118,10 +179,11 @@ const Home = () => {
         ) : (
           <PokemonList
             pokemons={pokemons}
+            searchPokemons={searchPokemons}
             filteredPokemons={filteredPokemons}
             isFilter={isFilter}
             typeNotFound={typeNotFound}
-            search={search}
+            isSearch={isSearch}
           />
         )}
       </Wrapper>

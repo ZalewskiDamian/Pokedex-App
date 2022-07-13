@@ -25,16 +25,53 @@ const items = {
   hidden: { opacity: 0, x: -150 },
 };
 
-const PokemonList = ({ pokemons, filteredPokemons, typeNotFound, search }) => {
+const PokemonList = ({
+  pokemons,
+  searchPokemons,
+  filteredPokemons,
+  typeNotFound,
+  isSearch,
+  isFilter,
+}) => {
   return (
     <Container>
-      {filteredPokemons.length > 0 ? (
+      {isSearch ? (
         <Grid initial="hidden" animate="visible" variants={list}>
-          {filteredPokemons
-            .filter((pokemon) => pokemon.name.includes(search.toLowerCase()))
-            .map((pokemon) => (
+          {searchPokemons.map((pokemon) => (
+            <PokemonThumbnail
+              key={pokemon.id}
+              id={pokemon.id}
+              name={pokemon.name}
+              image={
+                pokemon.sprites.other.dream_world.front_default === null
+                  ? pokemon.sprites.other["official-artwork"].front_default
+                  : pokemon.sprites.other.dream_world.front_default
+              }
+              types={pokemon.types}
+            />
+          ))}
+        </Grid>
+      ) : isFilter ? (
+        <Grid initial="hidden" animate="visible" variants={list}>
+          {filteredPokemons.map((pokemon) => (
+            <PokemonThumbnail
+              key={pokemon.id}
+              id={pokemon.id}
+              name={pokemon.name}
+              image={
+                pokemon.sprites.other.dream_world.front_default === null
+                  ? pokemon.sprites.other["official-artwork"].front_default
+                  : pokemon.sprites.other.dream_world.front_default
+              }
+              types={pokemon.types}
+            />
+          ))}
+        </Grid>
+      ) : (
+        <Grid initial="hidden" animate="visible" variants={list}>
+          {pokemons.map((pokemon) => (
+            <MotionListItem variants={items} key={pokemon.id}>
               <PokemonThumbnail
-                key={pokemon.id}
                 id={pokemon.id}
                 name={pokemon.name}
                 image={
@@ -44,30 +81,11 @@ const PokemonList = ({ pokemons, filteredPokemons, typeNotFound, search }) => {
                 }
                 types={pokemon.types}
               />
-            ))}
-        </Grid>
-      ) : typeNotFound ? (
-        <PokemonNotFound />
-      ) : (
-        <Grid initial="hidden" animate="visible" variants={list}>
-          {pokemons
-            .filter((pokemon) => pokemon.name.includes(search.toLowerCase()))
-            .map((pokemon) => (
-              <MotionListItem variants={items} key={pokemon.id}>
-                <PokemonThumbnail
-                  id={pokemon.id}
-                  name={pokemon.name}
-                  image={
-                    pokemon.sprites.other.dream_world.front_default === null
-                      ? pokemon.sprites.other["official-artwork"].front_default
-                      : pokemon.sprites.other.dream_world.front_default
-                  }
-                  types={pokemon.types}
-                />
-              </MotionListItem>
-            ))}
+            </MotionListItem>
+          ))}
         </Grid>
       )}
+      {typeNotFound && <PokemonNotFound />}
     </Container>
   );
 };
