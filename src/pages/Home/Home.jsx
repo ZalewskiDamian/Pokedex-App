@@ -37,7 +37,7 @@ const Home = () => {
     pokemonArr.sort((a, b) => (a.id > b.id ? 1 : -1));
 
     if (isTypeSelected) {
-      pokemons.forEach((pokemon) => {
+      pokemonArr.forEach((pokemon) => {
         pokemon.types.forEach((item) => {
           if (type === item.type.name) {
             filterArr.push(pokemon);
@@ -81,7 +81,6 @@ const Home = () => {
       }
     });
   };
-
   const handleChangeSortBy = (e) => {
     setSortBy(e.target.value);
     const sorted = pokemons;
@@ -96,16 +95,29 @@ const Home = () => {
   };
 
   const handleChangeType = (e) => {
-    setType(e.target.value);
-
     if (e.target.value === "all types") {
+      console.log(pokemons);
       const allPokemons = pokemons;
-      setPokemons(allPokemons);
-      console.log("tak");
-    } else {
-      console.log("nie");
-      setIsTypeSelected(true);
+
+      if (sortBy === "Name") {
+        allPokemons.sort((a, b) => (a.name > b.name ? 1 : -1));
+        setIsFilter(false);
+        setType(e.target.value);
+        setPokemons(allPokemons);
+        setIsTypeSelected(false);
+        setTypeNotFound(false);
+      } else {
+        allPokemons.sort((a, b) => (a.id > b.id ? 1 : -1));
+        setIsFilter(false);
+        setType(e.target.value);
+        setPokemons(allPokemons);
+        setIsTypeSelected(false);
+        setTypeNotFound(false);
+      }
+      return;
     }
+    setIsTypeSelected(true);
+
     const filterArr = [];
 
     pokemons.forEach((pokemon) => {
@@ -122,10 +134,8 @@ const Home = () => {
     setType(e.target.value);
 
     if (filterArr.length === 0) {
-      console.log("arr = 0");
       setTypeNotFound(true);
     } else {
-      console.log("arr = 1");
       setTypeNotFound(false);
     }
   };
