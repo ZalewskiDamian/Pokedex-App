@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/Pokedex-App/static/js/main.2fe1701b.js",
+    "main.js": "/Pokedex-App/static/js/main.7e680e70.js",
     "static/media/logo.png": "/Pokedex-App/static/media/logo.cf28b53ca57d4fe1e247.png",
     "static/media/dragon.svg": "/Pokedex-App/static/media/dragon.9d32757b191cbbaea8d4d418ff5d4ed3.svg",
     "static/media/fire.svg": "/Pokedex-App/static/media/fire.e0bd7fcab2121e7ac1ffbbe09a3ca5dd.svg",
@@ -14,9 +14,9 @@
     "static/media/flying.svg": "/Pokedex-App/static/media/flying.d17785038a59f3ce2121e423a2ded0f7.svg",
     "static/media/fighting.svg": "/Pokedex-App/static/media/fighting.f20d1bd24f0cde62bb378b672f0178aa.svg",
     "static/media/poison.svg": "/Pokedex-App/static/media/poison.43956925ad0376b77c7e3921caa3dc30.svg",
+    "index.html": "/Pokedex-App/index.html",
     "static/media/steel.svg": "/Pokedex-App/static/media/steel.cb91a92a3b5197e2cf61bc66592f42d1.svg",
     "static/media/loading.svg": "/Pokedex-App/static/media/loading.0e43e57c9a927ddc6c0a10b0bf35b49a.svg",
-    "index.html": "/Pokedex-App/index.html",
     "static/media/ground.svg": "/Pokedex-App/static/media/ground.e567f4fc3f3422598757977865de57d8.svg",
     "static/media/pokemon-details-bg.svg": "/Pokedex-App/static/media/pokemon-details-bg.f2b8445ce037b1e82094603a18390e2f.svg",
     "static/media/dark.svg": "/Pokedex-App/static/media/dark.27fdc7ed2bd3294b9838b1882c20e225.svg",
@@ -24,9 +24,9 @@
     "static/media/electric.svg": "/Pokedex-App/static/media/electric.bc35c5a3faf04b605c00967b94e93693.svg",
     "static/media/grass.svg": "/Pokedex-App/static/media/grass.e09623e3345d5bf5286f5323dd923c60.svg",
     "static/media/normal.svg": "/Pokedex-App/static/media/normal.2ba66dd583ebf70eb414a0cfd20a48be.svg",
-    "main.2fe1701b.js.map": "/Pokedex-App/static/js/main.2fe1701b.js.map"
+    "main.7e680e70.js.map": "/Pokedex-App/static/js/main.7e680e70.js.map"
   },
   "entrypoints": [
-    "static/js/main.2fe1701b.js"
+    "static/js/main.7e680e70.js"
   ]
 }
