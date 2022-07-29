@@ -160,7 +160,6 @@ const PokemonDetails = () => {
     fetchPokemonData(id);
   }, [id]);
 
-  console.log(pokemon);
   return (
     <Container>
       {loading ? (
