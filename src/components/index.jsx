@@ -7,9 +7,6 @@ import Loading from "./Loading/Loading";
 import Navigation from "./Navigation/Navigation";
 import PokemonModal from "./PokemonModal/PokemonModal";
 import Tabs from "./Tabs/Tabs";
-import TabAbout from "./TabAbout/TabAbout";
-import TabStats from "./TabStats/TabStats";
-import TabEvolution from "./TabEvolution/TabEvolution";
 import Filters from "./Filters/Filters";
 import PokemonNotFound from "./PokemonNotFound/PokemonNotFound";
 
@@ -23,9 +20,6 @@ export {
   Navigation,
   PokemonModal,
   Tabs,
-  TabAbout,
-  TabStats,
-  TabEvolution,
   Filters,
   PokemonNotFound,
 };

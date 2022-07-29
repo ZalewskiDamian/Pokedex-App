@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { regions, sort, types } from "./Home.data";
-import { Loading, PokemonList, Filters } from "../../components";
+import { Header, Loading, PokemonList, Filters } from "../../components";
 import { Container, Wrapper } from "./Home.styles";
 
 const Home = () => {
@@ -96,7 +96,6 @@ const Home = () => {
 
   const handleChangeType = (e) => {
     if (e.target.value === "all types") {
-      console.log(pokemons);
       const allPokemons = pokemons;
 
       if (sortBy === "Name") {
@@ -154,7 +153,7 @@ const Home = () => {
     const searchArr = [];
 
     pokemons.forEach((pokemon) => {
-      if (pokemon.name.includes(search.toLowerCase())) {
+      if (pokemon.name.toLowerCase().includes(e.target.value.toLowerCase())) {
         searchArr.push(pokemon);
       }
     });
@@ -169,35 +168,38 @@ const Home = () => {
   };
 
   return (
-    <Container>
-      <Wrapper>
-        <Filters
-          regions={regions}
-          region={region}
-          sort={sort}
-          sortBy={sortBy}
-          types={types}
-          type={type}
-          search={search}
-          changeRegion={handleChangeRegion}
-          handleSortBy={handleChangeSortBy}
-          handleChangeType={handleChangeType}
-          handleSearchPokemon={handleSearchPokemon}
-        />
-        {loading ? (
-          <Loading />
-        ) : (
-          <PokemonList
-            pokemons={pokemons}
-            searchPokemons={searchPokemons}
-            filteredPokemons={filteredPokemons}
-            isFilter={isFilter}
-            typeNotFound={typeNotFound}
-            isSearch={isSearch}
+    <>
+      <Header />
+      <Container>
+        <Wrapper>
+          <Filters
+            regions={regions}
+            region={region}
+            sort={sort}
+            sortBy={sortBy}
+            types={types}
+            type={type}
+            search={search}
+            changeRegion={handleChangeRegion}
+            handleSortBy={handleChangeSortBy}
+            handleChangeType={handleChangeType}
+            handleSearchPokemon={handleSearchPokemon}
           />
-        )}
-      </Wrapper>
-    </Container>
+          {loading ? (
+            <Loading />
+          ) : (
+            <PokemonList
+              pokemons={pokemons}
+              searchPokemons={searchPokemons}
+              filteredPokemons={filteredPokemons}
+              isFilter={isFilter}
+              typeNotFound={typeNotFound}
+              isSearch={isSearch}
+            />
+          )}
+        </Wrapper>
+      </Container>
+    </>
   );
 };
 

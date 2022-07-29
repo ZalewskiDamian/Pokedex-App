@@ -1,5 +1,7 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 import pokemonBg from "../../assets/images/pokemon-details-bg.svg";
+import arrowIcon from "../../assets/images/arrow-left.png";
 
 export const Container = styled.div`
   width: 100%;
@@ -55,6 +57,21 @@ export const WrapperTop = styled.div`
     }
   }
 `;
+export const ArrowBack = styled(NavLink)`
+  width: 2.4rem;
+  height: 2.4rem;
+  background-image: url(${arrowIcon});
+  background-size: cover;
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  z-index: 10;
+
+  @media (min-width: 992px) {
+    top: 5rem;
+    left: 5rem;
+  }
+`;
 export const Inner = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -71,12 +88,13 @@ export const ImageWrapper = styled.div`
   background-repeat: no-repeat;
 
   @media (min-width: 992px) {
-    width: 18rem;
-    height: 18rem;
+    width: 20rem;
+    height: 20rem;
   }
 `;
 export const PokemonImage = styled.img`
   width: 100%;
+  height: 100%;
 `;
 export const Content = styled.div`
   display: flex;
@@ -94,6 +112,10 @@ export const Number = styled.p(
   font-size: ${theme.font.paragraph};
   font-weight: ${theme.weight.bold};
   color: ${theme.colors.grayDark};
+
+  @media (min-width: 992px) {
+    font-size: ${theme.font.subheadingM};
+  }
   `
 );
 export const Name = styled.h3(
@@ -102,7 +124,11 @@ export const Name = styled.h3(
   font-weight: ${theme.weight.extraBold};
   color: ${theme.colors.white};
   letter-spacing: .1rem;
-  margin-bottom: .5REM;
+  margin-bottom: .5rem;
+
+  @media (min-width: 992px) {
+    font-size: ${theme.font.headingD};
+  }
   `
 );
 export const TypesWrapper = styled.div`
@@ -116,5 +142,5 @@ export const WrapperBottom = styled.div`
   border-top-left-radius: 2.5rem;
   border-top-right-radius: 2.5rem;
   transform: translateY(-2rem);
-  padding: 0 2rem 2rem 2rem;
+  padding: 0 2rem;
 `;
