@@ -35,6 +35,7 @@ const PokemonDetails = () => {
   });
   const [loading, setLoading] = useState(true);
   const [evolutionChain, setEvolutionChain] = useState([]);
+  const [damageRelations, setDamageRelations] = useState({});
   const { id } = useParams();
 
   const getEvoImages = async (evolutionChain) => {
@@ -114,7 +115,7 @@ const PokemonDetails = () => {
     const response = await axios
       .get(`${process.env.REACT_APP_URL}/${id}`)
       .catch((err) => console.log("Err: ", err));
-
+    console.log(response.data);
     const name =
       response.data.name.charAt(0).toUpperCase() + response.data.name.slice(1);
 
@@ -141,6 +142,11 @@ const PokemonDetails = () => {
 
     const exp = response.data.base_experience;
 
+    const damageData = await axios
+      .get(response.data.types[0].type.url)
+      .catch((err) => console.log("err: ", err));
+
+    setDamageRelations(damageData.data.damage_relations);
     setPokemon({
       name,
       imageUrl,
@@ -184,7 +190,11 @@ const PokemonDetails = () => {
             </Inner>
           </WrapperTop>
           <WrapperBottom>
-            <Tabs pokemon={pokemon} evolutionChain={evolutionChain} />
+            <Tabs
+              pokemon={pokemon}
+              evolutionChain={evolutionChain}
+              damageRelations={damageRelations}
+            />
           </WrapperBottom>
         </>
       )}

@@ -19,7 +19,7 @@ import rock from "../../assets/images/types/rock.svg";
 import steel from "../../assets/images/types/steel.svg";
 import water from "../../assets/images/types/water.svg";
 
-const Type = ({ type }) => {
+const Type = ({ type, short }) => {
   const renderTypeIcon = (type) => {
     switch (type) {
       case "bug":
@@ -65,9 +65,9 @@ const Type = ({ type }) => {
   };
 
   return (
-    <Wrapper className={type}>
-      <Icon src={renderTypeIcon(type)} alt={type} />
-      <Name>{type}</Name>
+    <Wrapper className={type} short={short}>
+      <Icon src={renderTypeIcon(type)} alt={type} title={type} />
+      {short ? null : <Name>{type}</Name>}
     </Wrapper>
   );
 };

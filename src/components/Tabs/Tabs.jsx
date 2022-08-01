@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { AppRoute } from "../../routing/AppRoute.enum";
+import Type from "../Type/Type";
 import {
   Wrapper,
   Container,
@@ -23,9 +24,11 @@ import {
   EvolutionImage,
   EvolutionImageWrapper,
   EvolutionTitle,
+  RowEffectivenes,
+  TypesWrapper,
 } from "./Tabs.styles";
 
-const Tabs = ({ pokemon, evolutionChain }) => {
+const Tabs = ({ pokemon, evolutionChain, damageRelations }) => {
   const [toggleState, setToggleState] = useState(1);
 
   const toggleTab = (index) => {
@@ -127,6 +130,24 @@ const Tabs = ({ pokemon, evolutionChain }) => {
                 </StatsBar>
               </RowStats>
             ))}
+            <Title>Type Defenses</Title>
+            <Description>The effectiveness types on {pokemon.name}</Description>
+            <RowEffectivenes>
+              <RowTitle>Weaknesses</RowTitle>
+              <TypesWrapper>
+                {damageRelations.double_damage_from.map((item) => (
+                  <Type short key={item.name} type={item.name} />
+                ))}
+              </TypesWrapper>
+            </RowEffectivenes>
+            <RowEffectivenes>
+              <RowTitle>Effective</RowTitle>
+              <TypesWrapper>
+                {damageRelations.double_damage_to.map((item) => (
+                  <Type short key={item.name} type={item.name} />
+                ))}
+              </TypesWrapper>
+            </RowEffectivenes>
           </Container>
         </Content>
         {/* TAB EVOLUTION */}

@@ -234,3 +234,20 @@ export const EvolutionTitle = styled.p(
   }
   `
 );
+export const RowEffectivenes = styled.div`
+  display: grid;
+  grid-template-columns: 12rem 1fr;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  @media (min-width: 992px) {
+    grid-template-columns: 15rem 1fr;
+  }
+`;
+export const TypesWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 3rem);
+  justify-content: flex-start;
+  grid-gap: 1rem;
+`;
