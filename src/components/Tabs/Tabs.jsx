@@ -131,19 +131,35 @@ const Tabs = ({ pokemon, evolutionChain, damageRelations }) => {
               </RowStats>
             ))}
             <Title>Type Defenses</Title>
-            <Description>The effectiveness types on {pokemon.name}</Description>
             <RowEffectivenes>
-              <RowTitle>Weaknesses</RowTitle>
+              <RowTitle>2x Damage From</RowTitle>
               <TypesWrapper>
-                {damageRelations.double_damage_from.map((item) => (
+                {pokemon.damageRelations.double_damage_from.map((item) => (
                   <Type short key={item.name} type={item.name} />
                 ))}
               </TypesWrapper>
             </RowEffectivenes>
             <RowEffectivenes>
-              <RowTitle>Effective</RowTitle>
+              <RowTitle>1/2 Damage From</RowTitle>
               <TypesWrapper>
-                {damageRelations.double_damage_to.map((item) => (
+                {pokemon.damageRelations.half_damage_from.map((item) => (
+                  <Type short key={item.name} type={item.name} />
+                ))}
+              </TypesWrapper>
+            </RowEffectivenes>
+            <Title>Type Attacking</Title>
+            <RowEffectivenes>
+              <RowTitle>2x Damage To</RowTitle>
+              <TypesWrapper>
+                {pokemon.damageRelations.double_damage_to.map((item) => (
+                  <Type short key={item.name} type={item.name} />
+                ))}
+              </TypesWrapper>
+            </RowEffectivenes>
+            <RowEffectivenes>
+              <RowTitle>1/2 Damage To</RowTitle>
+              <TypesWrapper>
+                {pokemon.damageRelations.half_damage_to.map((item) => (
                   <Type short key={item.name} type={item.name} />
                 ))}
               </TypesWrapper>
