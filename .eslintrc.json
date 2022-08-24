@@ -47,5 +47,6 @@
     "no-console": "off",
     "react/prop-types": "off",
     "no-param-reassign": 0
+    // "eslint multiline-ternary": ["error", "always"]
   }
 }

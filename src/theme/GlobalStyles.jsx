@@ -97,6 +97,9 @@ const GlobalStyle = createGlobalStyle`
     .fairy {
         background-color: #D685AD;
     }
+    .all {
+        background-color: #333333;
+    }
 `;
 
 export default GlobalStyle;

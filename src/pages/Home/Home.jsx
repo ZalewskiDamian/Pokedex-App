@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { regions, sort, types } from "./Home.data";
-import { Header, Loading, PokemonList, Filters } from "../../components";
-import { Container, Wrapper } from "./Home.styles";
+import { Loading, PokemonList, Filters } from "../../components";
+import { Container, Wrapper, Logo } from "./Home.styles";
+import logoIcon from "../../assets/images/logo.png";
 
 const Home = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -10,10 +11,11 @@ const Home = () => {
   const [searchPokemons, setSearchPokemons] = useState([]);
   const [url, setUrl] = useState(process.env.REACT_APP_URL);
   const [loading, setLoading] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
   // FILTERS
   const [limit, setLimit] = useState(151);
   const [offset, setOffset] = useState(0);
-  const [region, setRegion] = useState("Kanto");
+  // const [region, setRegion] = useState("Kanto");
   const [sortBy, setSortBy] = useState("id");
   const [type, setType] = useState("all types");
   const [isFilter, setIsFilter] = useState(false);
@@ -34,6 +36,7 @@ const Home = () => {
           .catch((err) => console.log("err:", err));
       })
     );
+
     pokemonArr.sort((a, b) => (a.id > b.id ? 1 : -1));
 
     if (isTypeSelected) {
@@ -72,16 +75,18 @@ const Home = () => {
 
   const handleChangeRegion = (e) => {
     regions.forEach((item) => {
-      if (e.target.value === item.name) {
-        setRegion(e.target.value);
+      if (e.target.textContent === item.name) {
+        // setRegion(e.target.textContent);
         setIsSearch(false);
         setIsFilter(false);
         setLimit(item.limit);
         setOffset(item.offset);
       }
     });
+    setModalOpen(false);
   };
   const handleChangeSortBy = (e) => {
+    console.log(e.target.value);
     setSortBy(e.target.value);
     const sorted = pokemons;
 
@@ -92,9 +97,11 @@ const Home = () => {
       sorted.sort((a, b) => (a.name > b.name ? 1 : -1));
       setPokemons(sorted);
     }
+    setModalOpen(false);
   };
 
   const handleChangeType = (e) => {
+    console.log(e.target.value);
     if (e.target.value === "all types") {
       const allPokemons = pokemons;
 
@@ -105,6 +112,7 @@ const Home = () => {
         setPokemons(allPokemons);
         setIsTypeSelected(false);
         setTypeNotFound(false);
+        setModalOpen(false);
       } else {
         allPokemons.sort((a, b) => (a.id > b.id ? 1 : -1));
         setIsFilter(false);
@@ -112,6 +120,7 @@ const Home = () => {
         setPokemons(allPokemons);
         setIsTypeSelected(false);
         setTypeNotFound(false);
+        setModalOpen(false);
       }
       return;
     }
@@ -137,6 +146,7 @@ const Home = () => {
     } else {
       setTypeNotFound(false);
     }
+    setModalOpen(false);
   };
 
   const handleSearchPokemon = (e) => {
@@ -169,17 +179,20 @@ const Home = () => {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Container>
         <Wrapper>
+          <Logo src={logoIcon} alt="Pokemon logo" />
           <Filters
             regions={regions}
-            region={region}
+            // region={region}
             sort={sort}
             sortBy={sortBy}
             types={types}
             type={type}
             search={search}
+            modalOpen={modalOpen}
+            setModalOpen={setModalOpen}
             changeRegion={handleChangeRegion}
             handleSortBy={handleChangeSortBy}
             handleChangeType={handleChangeType}

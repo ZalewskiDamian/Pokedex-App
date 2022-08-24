@@ -1,21 +1,22 @@
 import styled from "styled-components";
 import pokeballBg from "../../assets/images/pokeball-bg.svg";
+import dotsBg from "../../assets/images/background-dots.svg";
 
 export const Card = styled.div`
   width: 100%;
   border-radius: 1rem;
   padding: 1.5rem;
   position: relative;
-  background-image: url(${pokeballBg});
+  background-image: url(${pokeballBg}), url(${dotsBg});
+  background-position: right center, 35% -2rem;
   background-repeat: no-repeat;
-  background-size: 40%;
-  background-position: right center;
+  background-size: 40%, 17%;
   box-shadow: 0px 6px 9px rgba(0, 0, 0, 0.16);
   transition: all 0.4s;
 
   &:hover {
     cursor: pointer;
-    background-size: 50%;
+    background-size: 50%, 17%;
   }
 `;
 export const Number = styled.p(

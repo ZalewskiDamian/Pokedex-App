@@ -8,7 +8,6 @@ export const Wrapper = styled.div`
   position: relative;
   background: transparent;
   margin: 0 auto;
-  word-break: break-all;
   transform: translateY(-4rem);
 `;
 export const Container = styled.div`
@@ -16,6 +15,13 @@ export const Container = styled.div`
   max-width: 84rem;
   margin-left: auto;
   margin-right: auto;
+`;
+export const Inner = styled.div`
+  margin-bottom: 3rem;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 `;
 export const TabsNav = styled.div`
   display: flex;
@@ -73,6 +79,9 @@ export const Title = styled.h3(
     @media (min-width: 620px) {
       text-align: center;
     }
+    @media (min-width: 992px) {
+      font-size: ${theme.font.subheadingD};
+    }
     `
 );
 export const Description = styled.p(
@@ -125,9 +134,9 @@ export const RowTitle = styled.span(
     `
 );
 export const RowText = styled.span(
-  ({ theme }) => `
-    font-size: ${theme.font.paragraph};
-    font-weight: ${theme.weight.regular};
+  ({ theme, big }) => `
+    font-size: ${big ? theme.font.subheadingM : theme.font.paragraph};
+    font-weight: ${big ? theme.weight.bold : theme.weight.regular};
     color: ${theme.colors.gray};
     `
 );
@@ -159,7 +168,7 @@ export const StatsProgress = styled.div(
     position: absolute;
     top: 0;
     left: 0;
-    width: ${progress}%;
+    width: ${(progress / 255) * 100}%;
     max-width: 100%;
     height: 0.5rem;
     border-radius: 0.4rem;
@@ -194,7 +203,7 @@ export const EvolutionCard = styled.div`
         transform: translateY(-50%) rotate(-90deg);
         top: 50%;
         left: unset;
-        right: -2.5rem;
+        right: -1.5rem;
       }
     }
   }
@@ -208,6 +217,7 @@ export const EvolutionImageWrapper = styled.div`
   border-radius: 50%;
   margin-bottom: 1rem;
   transition: all 0.35s ease-in-out;
+
   &:hover {
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.16);
   }
@@ -240,6 +250,10 @@ export const RowEffectivenes = styled.div`
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 2rem;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 
   @media (min-width: 992px) {
     grid-template-columns: 15rem 1fr;

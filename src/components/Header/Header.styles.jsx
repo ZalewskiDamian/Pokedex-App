@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.header`
+  position: relative;
   width: 100%;
   max-width: 150rem;
   margin-left: auto;

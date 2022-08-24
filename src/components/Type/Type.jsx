@@ -18,6 +18,7 @@ import psychic from "../../assets/images/types/psychic.svg";
 import rock from "../../assets/images/types/rock.svg";
 import steel from "../../assets/images/types/steel.svg";
 import water from "../../assets/images/types/water.svg";
+import all from "../../assets/images/types/all.png";
 
 const Type = ({ type, short }) => {
   const renderTypeIcon = (type) => {
@@ -58,6 +59,8 @@ const Type = ({ type, short }) => {
         return steel;
       case "water":
         return water;
+      case "all types":
+        return all;
 
       default:
         return null;

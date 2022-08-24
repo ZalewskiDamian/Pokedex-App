@@ -5,6 +5,7 @@ export const theme = {
     gray: "#99999b",
     grayLight: "#f5f5f5",
     grayDark: "#505056",
+    red: "#ea5d60",
     // TYPES
     normal: "#A8A77A",
     fire: "#EE8130",
@@ -38,7 +39,7 @@ export const theme = {
     titleM: "2.2rem",
     titleD: "2.8rem",
     subheadingM: "1.8rem",
-    subheadingD: "2.4rem",
+    subheadingD: "2.2rem",
     paragraph: "1.6rem",
     font_14: "1.4rem",
   },

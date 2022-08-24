@@ -1,0 +1,37 @@
+<svg width="120" height="76" viewBox="0 0 120 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_106_39" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="76">
+<circle cx="5" cy="5" r="5" fill="white"/>
+<circle cx="5" cy="27" r="5" fill="white"/>
+<circle cx="5" cy="49" r="5" fill="white"/>
+<circle cx="5" cy="71" r="5" fill="white"/>
+<circle cx="49" cy="5" r="5" fill="white"/>
+<circle cx="49" cy="27" r="5" fill="white"/>
+<circle cx="49" cy="49" r="5" fill="white"/>
+<circle cx="49" cy="71" r="5" fill="white"/>
+<circle cx="93" cy="5" r="5" fill="white"/>
+<circle cx="93" cy="27" r="5" fill="white"/>
+<circle cx="93" cy="49" r="5" fill="white"/>
+<circle cx="93" cy="71" r="5" fill="white"/>
+<circle cx="27" cy="5" r="5" fill="white"/>
+<circle cx="27" cy="27" r="5" fill="white"/>
+<circle cx="27" cy="49" r="5" fill="white"/>
+<circle cx="27" cy="71" r="5" fill="white"/>
+<circle cx="71" cy="5" r="5" fill="white"/>
+<circle cx="71" cy="27" r="5" fill="white"/>
+<circle cx="71" cy="49" r="5" fill="white"/>
+<circle cx="71" cy="71" r="5" fill="white"/>
+<circle cx="115" cy="5" r="5" fill="white"/>
+<circle cx="115" cy="27" r="5" fill="white"/>
+<circle cx="115" cy="49" r="5" fill="white"/>
+<circle cx="115" cy="71" r="5" fill="white"/>
+</mask>
+<g mask="url(#mask0_106_39)">
+<rect width="120" height="76" fill="url(#paint0_linear_106_39)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_106_39" x1="60" y1="0" x2="60" y2="76" gradientUnits="userSpaceOnUse">
+<stop stop-color="#F1F1F1" stop-opacity="0.3"/>
+<stop offset="1" stop-color="#F1F1F1" stop-opacity="0.1"/>
+</linearGradient>
+</defs>
+</svg>

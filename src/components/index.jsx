@@ -5,10 +5,12 @@ import PokemonThumbnail from "./PokemonThumbnail/PokemonThumbnail";
 import Type from "./Type/Type";
 import Loading from "./Loading/Loading";
 import Navigation from "./Navigation/Navigation";
-import PokemonModal from "./PokemonModal/PokemonModal";
 import Tabs from "./Tabs/Tabs";
 import Filters from "./Filters/Filters";
 import PokemonNotFound from "./PokemonNotFound/PokemonNotFound";
+import FilterModal from "./FilterModal/FilterModal";
+import Backdrop from "./Backdrop/Backdrop";
+import Button from "./Button/Button";
 
 export {
   Header,
@@ -18,8 +20,10 @@ export {
   Type,
   Loading,
   Navigation,
-  PokemonModal,
   Tabs,
   Filters,
   PokemonNotFound,
+  FilterModal,
+  Backdrop,
+  Button,
 };

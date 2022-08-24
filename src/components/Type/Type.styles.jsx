@@ -18,6 +18,7 @@ export const Name = styled.span(
     color: ${theme.colors.white};
     font-size: ${theme.font.font_14};
     font-weight: ${theme.weight.medium};
+    line-height: 1.4rem;
     margin-left: .5rem;
     `
 );

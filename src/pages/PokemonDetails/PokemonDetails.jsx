@@ -133,9 +133,7 @@ const PokemonDetails = () => {
     const weight =
       Math.round((response.data.weight * 0.220462 + 0.00001) * 100) / 100;
 
-    const abilities = response.data.abilities.map(
-      (ability) => ability.ability.name
-    );
+    const abilities = response.data.abilities.map((ability) => ability);
 
     const { stats } = response.data;
 
@@ -146,7 +144,7 @@ const PokemonDetails = () => {
       .catch((err) => console.log("err: ", err));
 
     const damageRelations = damageResponse.data.damage_relations;
-    console.log(damageRelations);
+
     setPokemon({
       name,
       imageUrl,
