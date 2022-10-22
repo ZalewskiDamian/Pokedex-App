@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Pokedex-App/static/css/main.88975cc2.css",
-    "main.js": "/Pokedex-App/static/js/main.29c398d2.js",
+    "main.js": "/Pokedex-App/static/js/main.793e25ec.js",
     "static/media/kalos_3.png": "/Pokedex-App/static/media/kalos_3.97610d8b8c6bfa62ef48.png",
     "static/media/alola_1.png": "/Pokedex-App/static/media/alola_1.4e44e7a7e6626bf31c87.png",
     "static/media/kalos_2.png": "/Pokedex-App/static/media/kalos_2.edc1e28e81a011ca5662.png",
@@ -51,10 +51,10 @@
     "static/media/grass.svg": "/Pokedex-App/static/media/grass.e09623e3345d5bf5286f5323dd923c60.svg",
     "static/media/normal.svg": "/Pokedex-App/static/media/normal.2ba66dd583ebf70eb414a0cfd20a48be.svg",
     "main.88975cc2.css.map": "/Pokedex-App/static/css/main.88975cc2.css.map",
-    "main.29c398d2.js.map": "/Pokedex-App/static/js/main.29c398d2.js.map"
+    "main.793e25ec.js.map": "/Pokedex-App/static/js/main.793e25ec.js.map"
   },
   "entrypoints": [
     "static/css/main.88975cc2.css",
-    "static/js/main.29c398d2.js"
+    "static/js/main.793e25ec.js"
   ]
 }
