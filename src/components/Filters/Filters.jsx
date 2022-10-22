@@ -10,8 +10,6 @@ import {
   FiltersWrapper,
   Title,
   Paragraph,
-  Select,
-  Option,
   SwiperWrapper,
   GenerationsGrid,
   GenerationsCard,
@@ -30,13 +28,10 @@ import filtersIcon from "../../assets/images/filter-icon.png";
 
 const Filters = ({
   regions,
-  // region,
   changeRegion,
   sort,
-  sortBy,
   handleSortBy,
   types,
-  type,
   handleChangeType,
   search,
   handleSearchPokemon,
@@ -59,13 +54,6 @@ const Filters = ({
               <Paragraph>
                 Use search for generations to explore your Pokemon!
               </Paragraph>
-              {/* <Select value={region} onChange={changeRegion}>
-                  {regions.map((item) => (
-                    <Option key={item.name} value={item.name}>
-                      {item.name}
-                    </Option>
-                  ))}
-                </Select> */}
               <GenerationsGrid>
                 {regions.map((item) => (
                   <GenerationsCard key={item.name} onClick={changeRegion}>

@@ -15,7 +15,6 @@ const Home = () => {
   // FILTERS
   const [limit, setLimit] = useState(151);
   const [offset, setOffset] = useState(0);
-  // const [region, setRegion] = useState("Kanto");
   const [sortBy, setSortBy] = useState("id");
   const [type, setType] = useState("all types");
   const [isFilter, setIsFilter] = useState(false);
@@ -61,12 +60,11 @@ const Home = () => {
   const getAllPokemons = async (limit, offset) => {
     setLoading(true);
 
-    await axios
+    const response = await axios
       .get(`${url}?limit=${limit}&offset=${offset}`)
-      .then((res) => {
-        getPokemonData(res.data.results);
-      })
       .catch((err) => console.log("err:", err));
+
+    getPokemonData(response.data.results);
   };
 
   useEffect(() => {
@@ -76,7 +74,6 @@ const Home = () => {
   const handleChangeRegion = (e) => {
     regions.forEach((item) => {
       if (e.target.textContent === item.name) {
-        // setRegion(e.target.textContent);
         setIsSearch(false);
         setIsFilter(false);
         setLimit(item.limit);
@@ -86,22 +83,32 @@ const Home = () => {
     setModalOpen(false);
   };
   const handleChangeSortBy = (e) => {
-    console.log(e.target.value);
     setSortBy(e.target.value);
-    const sorted = pokemons;
+
+    let sorted = [];
+
+    if (isFilter) {
+      sorted = filteredPokemons;
+    } else {
+      sorted = pokemons;
+    }
 
     if (e.target.value === "id") {
       sorted.sort((a, b) => (a.id > b.id ? 1 : -1));
-      setPokemons(sorted);
     } else {
       sorted.sort((a, b) => (a.name > b.name ? 1 : -1));
+    }
+
+    if (isFilter) {
+      setFilteredPokemons(sorted);
+    } else {
       setPokemons(sorted);
     }
+
     setModalOpen(false);
   };
 
   const handleChangeType = (e) => {
-    console.log(e.target.value);
     if (e.target.value === "all types") {
       const allPokemons = pokemons;
 
@@ -178,41 +185,36 @@ const Home = () => {
   };
 
   return (
-    <>
-      {/* <Header /> */}
-      <Container>
-        <Wrapper>
-          <Logo src={logoIcon} alt="Pokemon logo" />
-          <Filters
-            regions={regions}
-            // region={region}
-            sort={sort}
-            sortBy={sortBy}
-            types={types}
-            type={type}
-            search={search}
-            modalOpen={modalOpen}
-            setModalOpen={setModalOpen}
-            changeRegion={handleChangeRegion}
-            handleSortBy={handleChangeSortBy}
-            handleChangeType={handleChangeType}
-            handleSearchPokemon={handleSearchPokemon}
+    <Container>
+      <Wrapper>
+        <Logo src={logoIcon} alt="Pokemon logo" />
+        <Filters
+          regions={regions}
+          sort={sort}
+          sortBy={sortBy}
+          types={types}
+          search={search}
+          modalOpen={modalOpen}
+          setModalOpen={setModalOpen}
+          changeRegion={handleChangeRegion}
+          handleSortBy={handleChangeSortBy}
+          handleChangeType={handleChangeType}
+          handleSearchPokemon={handleSearchPokemon}
+        />
+        {loading ? (
+          <Loading />
+        ) : (
+          <PokemonList
+            pokemons={pokemons}
+            searchPokemons={searchPokemons}
+            filteredPokemons={filteredPokemons}
+            isFilter={isFilter}
+            typeNotFound={typeNotFound}
+            isSearch={isSearch}
           />
-          {loading ? (
-            <Loading />
-          ) : (
-            <PokemonList
-              pokemons={pokemons}
-              searchPokemons={searchPokemons}
-              filteredPokemons={filteredPokemons}
-              isFilter={isFilter}
-              typeNotFound={typeNotFound}
-              isSearch={isSearch}
-            />
-          )}
-        </Wrapper>
-      </Container>
-    </>
+        )}
+      </Wrapper>
+    </Container>
   );
 };
 

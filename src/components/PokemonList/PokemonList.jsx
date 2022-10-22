@@ -69,8 +69,9 @@ const PokemonList = ({
         </Grid>
       ) : (
         <Grid initial="hidden" animate="visible" variants={list}>
-          {pokemons.map((pokemon) => (
-            <MotionListItem variants={items} key={pokemon.id}>
+          {pokemons.map((pokemon, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <MotionListItem variants={items} key={index}>
               <PokemonThumbnail
                 id={pokemon.id}
                 name={pokemon.name}

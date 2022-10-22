@@ -9,6 +9,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  min-height: 100vh;
 `;
 export const WrapperTop = styled.div`
   width: 100%;
